@@ -103,3 +103,4 @@ function getFavoriteMove() {
 ========================= */
 
 updateUI();
+window.play = play;
