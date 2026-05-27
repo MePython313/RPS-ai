@@ -17,3 +17,12 @@ function saveStats() {
         JSON.stringify(stats)
     );
 }
+function addMoveToHistory(move) {
+
+    stats.history.push(move);
+
+    // 🧹 FORGET OLD MOVES (limit 100)
+    if (stats.history.length > 100) {
+        stats.history.shift(); // removes oldest
+    }
+}
