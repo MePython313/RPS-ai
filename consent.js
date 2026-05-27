@@ -1,60 +1,30 @@
-let analyticsAllowed =
-    localStorage.getItem("analyticsConsent");
+window.addEventListener("DOMContentLoaded", () => {
 
-function showConsentPopup() {
+    const popup = document.getElementById("cookiePopup");
 
-    if (analyticsAllowed !== null) {
+    const consent = localStorage.getItem("analyticsConsent");
+
+    // if already answered → hide popup
+    if (consent !== null) {
+        popup.style.display = "none";
         return;
     }
 
-    let popup = document.createElement("div");
+    document.getElementById("allowBtn").onclick = () => {
 
-    popup.id = "cookiePopup";
+        localStorage.setItem("analyticsConsent", "true");
 
-    popup.innerHTML = `
-        <div class="popup-content">
-            <h2>🍪 Analytics Cookies</h2>
+        popup.style.display = "none";
 
-            <p>
-                This AI studies player behavior
-                to improve its mind-reading powers 💀
-            </p>
+        console.log("Analytics enabled 📊");
+    };
 
-            <button id="allowBtn">
-                Allow
-            </button>
+    document.getElementById("denyBtn").onclick = () => {
 
-            <button id="denyBtn">
-                Deny
-            </button>
-        </div>
-    `;
+        localStorage.setItem("analyticsConsent", "false");
 
-    document.body.appendChild(popup);
+        popup.style.display = "none";
 
-    document
-        .getElementById("allowBtn")
-        .onclick = () => {
-
-            localStorage.setItem(
-                "analyticsConsent",
-                "true"
-            );
-
-            location.reload();
-        };
-
-    document
-        .getElementById("denyBtn")
-        .onclick = () => {
-
-            localStorage.setItem(
-                "analyticsConsent",
-                "false"
-            );
-
-            location.reload();
-        };
-}
-
-showConsentPopup();
+        console.log("Analytics disabled 🚫");
+    };
+});
