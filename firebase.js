@@ -1,52 +1,41 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+// Firebase (browser CDN version)
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
 const firebaseConfig = {
-    apiKey: "AIzaSyAh9XECfwspwTm8usBeeu00Cf624hueYlQ",
-    authDomain: "rpc-backend-9eb70.firebaseapp.com",
-    projectId: "rpc-backend-9eb70",
-    storageBucket: "rpc-backend-9eb70.firebasestorage.app",
-    messagingSenderId: "713681920973",
-    appId: "1:713681920973:web:82db8826bb0e101edd1a84",
-    measurementId: "G-9N857MTVYF"
+  apiKey: "AIzaSyAh9XECfwspwTm8usBeeu00Cf624hueYlQ",
+  authDomain: "rpc-backend-9eb70.firebaseapp.com",
+  projectId: "rpc-backend-9eb70",
+  storageBucket: "rpc-backend-9eb70.firebasestorage.app",
+  messagingSenderId: "713681920973",
+  appId: "1:713681920973:web:82db8826bb0e101edd1a84",
+  measurementId: "G-9N857MTVYF"
 };
 
-// Initialize Firebase
+// init app
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
-// Initialize Firestore
+// database
+const db = getFirestore(app);
 
-const db =
-    getFirestore(app);
-
-// Upload analytics function
-
+// send analytics
 export async function uploadAnalytics(data) {
-
     try {
-
-        const docRef =
-            await addDoc(
-
-                collection(
-                    db,
-                    "analytics"
-                ),
-
-                data
-            );
-
-        console.log(
-            "Analytics uploaded:",
-            docRef.id
+        await addDoc(
+            collection(db, "analytics"),
+            data
         );
-    }
 
-    catch (error) {
+        console.log("🔥 sent to Firebase:", data);
 
-        console.error(
-            "Upload failed:",
-            error
-        );
+    } catch (e) {
+        console.error("Firebase error:", e);
     }
 }
