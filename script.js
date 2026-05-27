@@ -1,3 +1,4 @@
+window.play = play;
 / Firebase function (from firebase.js)
 import { uploadAnalytics } from "./firebase.js";
 
