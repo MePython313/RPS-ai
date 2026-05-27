@@ -1,29 +1,13 @@
 function updateUI() {
 
-    document.getElementById("games")
-        .innerText = stats.games;
+    document.getElementById("wins")
+        .innerText = stats.wins;
 
-    document.getElementById("rock")
-        .innerText = stats.rock;
+    document.getElementById("losses")
+        .innerText = stats.losses;
 
-    document.getElementById("paper")
-        .innerText = stats.paper;
-
-    document.getElementById("scissors")
-        .innerText = stats.scissors;
-
-    document.getElementById("favorite")
-        .innerText = getFavoriteMove();
-
-    let accuracy =
-        stats.games === 0
-        ? 0
-        : Math.round(
-            (stats.aiCorrect / stats.games) * 100
-        );
-
-    document.getElementById("accuracy")
-        .innerText = accuracy + "%";
+    document.getElementById("draws")
+        .innerText = stats.draws;
 }
 
 function getFavoriteMove() {
