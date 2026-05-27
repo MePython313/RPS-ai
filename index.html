@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>🧠 Rock Paper Scissors AI</h1>
+
+    <div class="buttons">
+        <button onclick="play('rock')">🪨 Rock</button>
+        <button onclick="play('paper')">📄 Paper</button>
+        <button onclick="play('scissors')">✂️ Scissors</button>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="stats">
+        <h2>📊 Analytics</h2>
+
+        <p>Games: <span id="games">0</span></p>
+        <p>Rock: <span id="rock">0</span></p>
+        <p>Paper: <span id="paper">0</span></p>
+        <p>Scissors: <span id="scissors">0</span></p>
+
+        <p>Favorite Move:
+            <span id="favorite">None</span>
+        </p>
+
+        <p>AI Accuracy:
+            <span id="accuracy">0%</span>
+        </p>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="analytics.js"></script>
+    <script src="ai.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
