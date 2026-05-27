@@ -14,21 +14,22 @@ function play(playerMove) {
 
     let result = "";
 
-    // win logic
     if (playerMove === aiMove) {
-        result = "🤝 Draw!";
-    }
-    else if (
-        (playerMove === "rock" && aiMove === "scissors") ||
-        (playerMove === "paper" && aiMove === "rock") ||
-        (playerMove === "scissors" && aiMove === "paper")
-    ) {
-        result = "🎉 You Win!";
-    }
-    else {
-        result = "💀 AI Wins!";
-    }
-
+    result = "🤝 Draw!";
+    stats.draws++;
+}
+else if (
+    (playerMove === "rock" && aiMove === "scissors") ||
+    (playerMove === "paper" && aiMove === "rock") ||
+    (playerMove === "scissors" && aiMove === "paper")
+) {
+    result = "🎉 You Win!";
+    stats.wins++;
+}
+else {
+    result = "💀 AI Wins!";
+    stats.losses++;
+}
     // AI tracking (simple learning bias)
     if (getFavoriteMove() === playerMove) {
         stats.aiCorrect++;
