@@ -1,4 +1,4 @@
-// Firebase function (from firebase.js)
+/ Firebase function (from firebase.js)
 import { uploadAnalytics } from "./firebase.js";
 
 /* =========================
@@ -6,7 +6,7 @@ import { uploadAnalytics } from "./firebase.js";
 ========================= */
 
 function play(playerMove) {
-
+    addMoveToHistory(playerMove);
     const aiMove = getAIMove();
 
     stats.games++;
