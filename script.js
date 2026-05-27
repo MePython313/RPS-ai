@@ -69,8 +69,36 @@ else {
 
 function getAIMove() {
 
-    const favorite = getFavoriteMove();
+    const history = stats.history;
 
+    const moves = ["rock", "paper", "scissors"];
+
+    // 🧠 if not enough data → random
+    if (!history || history.length < 5) {
+        return moves[Math.floor(Math.random() * 3)];
+    }
+
+    // 📊 count last 100 moves
+    let count = {
+        rock: 0,
+        paper: 0,
+        scissors: 0
+    };
+
+    for (let move of history) {
+        count[move]++;
+    }
+
+    // 🔍 find most common move
+    let favorite = "rock";
+
+    for (let m in count) {
+        if (count[m] > count[favorite]) {
+            favorite = m;
+        }
+    }
+
+    // 🎯 counter strategy
     if (favorite === "rock") return "paper";
     if (favorite === "paper") return "scissors";
     return "rock";
