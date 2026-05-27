@@ -1,3 +1,5 @@
+import { uploadAnalytics } from "./firebase.js";
+
 function play(playerMove) {
 
     stats.games++;
