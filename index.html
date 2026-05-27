@@ -1,45 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>RPS AI</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
     <h1>🧠 Rock Paper Scissors AI</h1>
 
+    <p>
+        The AI watches your habits and adapts 💀
+    </p>
+
+    <!-- GAME BUTTONS -->
+
     <div class="buttons">
-        <button onclick="play('rock')">🪨 Rock</button>
-        <button onclick="play('paper')">📄 Paper</button>
-        <button onclick="play('scissors')">✂️ Scissors</button>
+
+        <button onclick="play('rock')">
+            🪨 Rock
+        </button>
+
+        <button onclick="play('paper')">
+            📄 Paper
+        </button>
+
+        <button onclick="play('scissors')">
+            ✂️ Scissors
+        </button>
+
     </div>
 
-    <div id="result"></div>
+    <!-- RESULT -->
+
+    <div id="result">
+
+        Choose your move 👀
+
+    </div>
+
+    <!-- ANALYTICS PANEL -->
 
     <div class="stats">
+
         <h2>📊 Analytics</h2>
 
-        <p>Games: <span id="games">0</span></p>
-        <p>Rock: <span id="rock">0</span></p>
-        <p>Paper: <span id="paper">0</span></p>
-        <p>Scissors: <span id="scissors">0</span></p>
+        <p>
+            Games Played:
+            <span id="games">0</span>
+        </p>
 
-        <p>Favorite Move:
+        <p>
+            Rock Used:
+            <span id="rock">0</span>
+        </p>
+
+        <p>
+            Paper Used:
+            <span id="paper">0</span>
+        </p>
+
+        <p>
+            Scissors Used:
+            <span id="scissors">0</span>
+        </p>
+
+        <p>
+            Favorite Move:
             <span id="favorite">None</span>
         </p>
 
-        <p>AI Accuracy:
+        <p>
+            AI Accuracy:
             <span id="accuracy">0%</span>
         </p>
+
     </div>
 
+    <!-- COOKIE / ANALYTICS CONSENT -->
+
+    <div id="cookiePopup">
+
+        <div class="popup-content">
+
+            <h2>
+                🍪 Analytics Cookies
+            </h2>
+
+            <p>
+                This AI studies player behavior
+                to improve its mind-reading powers 💀
+            </p>
+
+            <p>
+                Anonymous gameplay statistics may
+                be stored if you allow analytics.
+            </p>
+
+            <button id="allowBtn">
+                Allow
+            </button>
+
+            <button id="denyBtn">
+                Deny
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT FILES -->
+
     <script src="storage.js"></script>
+
     <script src="analytics.js"></script>
+
     <script src="ai.js"></script>
+
     <script src="script.js"></script>
 
+    <script src="consent.js"></script>
+
 </body>
+
 </html>
