@@ -38,6 +38,10 @@ button:hover {
     margin-top: 40px;
     background: #1d1d1d;
     width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
 #cookiePopup {
     position: fixed;
     bottom: 20px;
@@ -65,7 +69,4 @@ button:hover {
     border-radius: 10px;
 
     cursor: pointer;
-}
-    padding: 20px;
-    border-radius: 15px;
 }

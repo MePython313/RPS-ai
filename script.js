@@ -1,6 +1,10 @@
-window.play = play;
-/ Firebase function (from firebase.js)
+// Firebase function (from firebase.js)
 import { uploadAnalytics } from "./firebase.js";
+
+// Import game modules
+import { stats, saveStats, addMoveToHistory } from "./storage.js";
+import { updateUI, getFavoriteMove } from "./analytics.js";
+import { getAIMove } from "./ai.js";
 
 /* =========================
    GAME CORE
@@ -16,21 +20,22 @@ function play(playerMove) {
     let result = "";
 
     if (playerMove === aiMove) {
-    result = "🤝 Draw!";
-    stats.draws++;
-}
-else if (
-    (playerMove === "rock" && aiMove === "scissors") ||
-    (playerMove === "paper" && aiMove === "rock") ||
-    (playerMove === "scissors" && aiMove === "paper")
-) {
-    result = "🎉 You Win!";
-    stats.wins++;
-}
-else {
-    result = "💀 AI Wins!";
-    stats.losses++;
-}
+        result = "🤝 Draw!";
+        stats.draws++;
+    }
+    else if (
+        (playerMove === "rock" && aiMove === "scissors") ||
+        (playerMove === "paper" && aiMove === "rock") ||
+        (playerMove === "scissors" && aiMove === "paper")
+    ) {
+        result = "🎉 You Win!";
+        stats.wins++;
+    }
+    else {
+        result = "💀 AI Wins!";
+        stats.losses++;
+    }
+
     // AI tracking (simple learning bias)
     if (getFavoriteMove() === playerMove) {
         stats.aiCorrect++;
@@ -65,72 +70,10 @@ else {
 }
 
 /* =========================
-   AI LOGIC
-========================= */
-
-function getAIMove() {
-
-    const history = stats.history;
-
-    const moves = ["rock", "paper", "scissors"];
-
-    // 🧠 if not enough data → random
-    if (!history || history.length < 5) {
-        return moves[Math.floor(Math.random() * 3)];
-    }
-
-    // 📊 count last 100 moves
-    let count = {
-        rock: 0,
-        paper: 0,
-        scissors: 0
-    };
-
-    for (let move of history) {
-        count[move]++;
-    }
-
-    // 🔍 find most common move
-    let favorite = "rock";
-
-    for (let m in count) {
-        if (count[m] > count[favorite]) {
-            favorite = m;
-        }
-    }
-
-    // 🎯 counter strategy
-    if (favorite === "rock") return "paper";
-    if (favorite === "paper") return "scissors";
-    return "rock";
-}
-
-/* =========================
-   FAVORITE MOVE DETECTOR
-========================= */
-
-function getFavoriteMove() {
-
-    const moves = {
-        rock: stats.rock,
-        paper: stats.paper,
-        scissors: stats.scissors
-    };
-
-    let best = "rock";
-
-    for (let m in moves) {
-        if (moves[m] > moves[best]) {
-            best = m;
-        }
-    }
-
-    return best;
-}
-
-/* =========================
    INITIAL LOAD
 ========================= */
 
 updateUI();
+
+// Expose play() to inline onclick handlers in HTML
 window.play = play;

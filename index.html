@@ -1,109 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>RPC-ai</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPC‑ai</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
-    <h1>RPC-ai</h1>
-
+    <h1>RPC‑ai</h1>
     <p>
-        It remembers your moves. Always.
-                    -made by Prakshit
+        It remembers your moves. Always.<br>
+        -made by Prakshit
     </p>
+
     <div class="status">
-    <span>🟢 Online AI</span>
-    <span>📊 Live Analytics</span>
+        <span>🟢 Online AI</span>
+        <span>📊 Live Analytics</span>
     </div>
-    <!-- GAME BUTTONS -->
 
     <div class="buttons">
-
-        <button onclick="play('rock')">
-            🪨 Rock
-        </button>
-
-        <button onclick="play('paper')">
-            📄 Paper
-        </button>
-
-        <button onclick="play('scissors')">
-            ✂️ Scissors
-        </button>
-
+        <button onclick="play('rock')">🪨 Rock</button>
+        <button onclick="play('paper')">📄 Paper</button>
+        <button onclick="play('scissors')">✂️ Scissors</button>
     </div>
-
-    <!-- RESULT -->
 
     <div id="result">
-
         Choose your move 👀
-
     </div>
-
-    <!-- ANALYTICS PANEL -->
 
     <div class="stats">
-
-    <h2>📊 Your Record</h2>
-
-    <p>🏆 Wins: <span id="wins">0</span></p>
-
-    <p>💀 Losses: <span id="losses">0</span></p>
-
-    <p>🤝 Draws: <span id="draws">0</span></p>
-
-</div>
-
-    <!-- COOKIE / ANALYTICS CONSENT -->
+        <h2>📊 Your Record</h2>
+        <p>🏆 Wins: <span id="wins">0</span></p>
+        <p>💀 Losses: <span id="losses">0</span></p>
+        <p>🤝 Draws: <span id="draws">0</span></p>
+    </div>
 
     <div id="cookiePopup">
-
-    <div class="popup-content">
-
-        <h2>🍪 Analytics Cookies</h2>
-
-        <p>
-            This AI studies player behavior
-            to improve its mind-reading powers 💀
-        </p>
-
-        <p>
-            Anonymous gameplay statistics may be stored if you allow analytics.
-        </p>
-
-        <button id="allowBtn">Allow</button>
-        <button id="denyBtn">Deny</button>
-
+        <div class="popup-content">
+            <h2>🍪 Analytics Cookies</h2>
+            <p>This AI studies player behavior to improve its mind‑reading powers 💀</p>
+            <p>Anonymous gameplay statistics may be stored if you allow analytics.</p>
+            <button id="allowBtn">Allow</button>
+            <button id="denyBtn">Deny</button>
+        </div>
     </div>
 
-    </div>
-
-    <!-- JAVASCRIPT FILES -->
-
-    <script src="storage.js"></script>
-
-    <script src="analytics.js"></script>
-
-    <script src="ai.js"></script>
-
+    <!-- Load the main logic as a module; it imports all other modules -->
     <script type="module" src="script.js"></script>
 
+    <!-- Consent handling (classic script, no imports) -->
     <script src="consent.js"></script>
-
 </body>
-
 </html>
