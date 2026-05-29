@@ -19,9 +19,21 @@
     </div>
 
     <div class="buttons">
-        <button onclick="play('rock')">🪨 Rock</button>
-        <button onclick="play('paper')">📄 Paper</button>
-        <button onclick="play('scissors')">✂️ Scissors</button>
+        <button onclick="play('rock')">✊ Rock</button>
+        <button onclick="play('paper')">✋ Paper</button>
+        <button onclick="play('scissors')">✌️ Scissors</button>
+    </div>
+
+    <div id="hands-container">
+        <div class="hand player-hand">
+            <div class="hand-label">YOU</div>
+            <div class="hand-icon" id="playerHand">❓</div>
+        </div>
+        <div class="vs">⚔️</div>
+        <div class="hand ai-hand">
+            <div class="hand-label">AI</div>
+            <div class="hand-icon" id="aiHand">❓</div>
+        </div>
     </div>
 
     <div id="result">

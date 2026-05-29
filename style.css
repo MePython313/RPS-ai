@@ -28,9 +28,94 @@ button:hover {
     transform: scale(1.1);
 }
 
-#result {
+#hands-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
     margin-top: 30px;
+    padding: 20px;
+}
+
+.hand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.hand-icon {
+    font-size: 4rem;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: #1d1d1d;
+    border: 3px solid #333;
+    transition: 0.3s;
+}
+
+.player-hand .hand-icon {
+    border-color: #4caf50;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+.ai-hand .hand-icon {
+    border-color: #ff4444;
+    background: #2a1a1a;
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+}
+
+.hand-label {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.player-hand .hand-label {
+    color: #4caf50;
+}
+
+.ai-hand .hand-label {
+    color: #ff4444;
+}
+
+@keyframes shake {
+    0%   { transform: translateY(0); }
+    12%  { transform: translateY(-25px); }
+    25%  { transform: translateY(0); }
+    37%  { transform: translateY(25px); }
+    50%  { transform: translateY(0); }
+    62%  { transform: translateY(-25px); }
+    75%  { transform: translateY(0); }
+    87%  { transform: translateY(25px); }
+    100% { transform: translateY(0); }
+}
+
+.shaking {
+    animation: shake 0.6s ease-in-out;
+}
+
+.vs {
+    font-size: 1.8rem;
+    opacity: 0.5;
+}
+
+#result {
+    margin-top: 20px;
     font-size: 1.5rem;
+}
+
+@keyframes pulseRed {
+    0% { box-shadow: 0 0 15px rgba(255, 68, 68, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(255, 68, 68, 0.7); }
+    100% { box-shadow: 0 0 15px rgba(255, 68, 68, 0.4); }
+}
+
+.ai-hand .hand-icon.show {
+    animation: pulseRed 1.5s ease-in-out infinite;
 }
 
 .stats {
