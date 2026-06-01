@@ -127,6 +127,35 @@ button:hover {
     border-radius: 15px;
 }
 
+.ai-status {
+    margin: auto;
+    margin-top: 15px;
+    background: #1d1d1d;
+    width: 300px;
+    padding: 12px 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.ai-status span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#aiMode {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+#aiConfidence {
+    color: #4caf50;
+    font-weight: bold;
+}
+
 #cookiePopup {
     position: fixed;
     bottom: 20px;

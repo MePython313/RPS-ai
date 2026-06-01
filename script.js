@@ -4,7 +4,7 @@ import { uploadAnalytics } from "./firebase.js";
 // Import game modules
 import { stats, saveStats, addMoveToHistory } from "./storage.js";
 import { updateUI, getFavoriteMove } from "./analytics.js";
-import { getAIMove } from "./ai.js";
+import { getAIMove, updateAI } from "./ai.js";
 
 /* =========================
    GAME CORE
@@ -13,6 +13,7 @@ import { getAIMove } from "./ai.js";
 function play(playerMove) {
     addMoveToHistory(playerMove);
     const aiMove = getAIMove();
+    const predictedMove = stats.lastPrediction;
 
     stats.games++;
     stats[playerMove]++;
@@ -36,10 +37,11 @@ function play(playerMove) {
         stats.losses++;
     }
 
-    // AI tracking (simple learning bias)
-    if (getFavoriteMove() === playerMove) {
+    // AI tracking - was the AI's prediction correct?
+    if (predictedMove === playerMove) {
         stats.aiCorrect++;
     }
+    updateAI(playerMove);
 
     // 🎬 ANIMATION — shake 3 times, then reveal
     const emojis = { rock: "✊", paper: "✋", scissors: "✌️" };
@@ -89,6 +91,9 @@ function play(playerMove) {
         uploadAnalytics({
             move: playerMove,
             aiMove: aiMove,
+            predictedMove: predictedMove,
+            confidence: stats.lastConfidence,
+            nnActive: (stats.history ? stats.history.length >= 10 : false),
             result: result,
             favoriteMove: getFavoriteMove(),
             timestamp: Date.now()

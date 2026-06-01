@@ -11,7 +11,13 @@ if (!stats) {
         scissors: 0,
         aiCorrect: 0,
         // AI memory (important)
-        history: []
+        history: [],
+        strategyData: {
+            wFreq: { correct: 1, total: 3 },
+            markov1: { correct: 1, total: 3 },
+            markov2: { correct: 1, total: 3 },
+            beatLast: { correct: 1, total: 3 }
+        }
     };
 } else {
     // Fallbacks for existing saved objects that may be missing newer fields
@@ -21,6 +27,12 @@ if (!stats) {
     if (stats.scissors === undefined)  stats.scissors = 0;
     if (stats.aiCorrect === undefined) stats.aiCorrect = 0;
     if (!stats.history)                stats.history = [];
+    if (!stats.strategyData)           stats.strategyData = {
+        wFreq: { correct: 1, total: 3 },
+        markov1: { correct: 1, total: 3 },
+        markov2: { correct: 1, total: 3 },
+        beatLast: { correct: 1, total: 3 }
+    };
 }
 
 export function saveStats() {
