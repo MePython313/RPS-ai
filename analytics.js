@@ -16,10 +16,10 @@ export function updateUI() {
             confEl.style.color = "#ff9800";
         } else {
             modeEl.textContent = "neural net";
-            modeEl.style.color = "#3ecf6a";
+            modeEl.style.color = "#3dff8b";
             const conf = stats.lastConfidence || 0;
             confEl.textContent = Math.round(conf * 100) + "%";
-            confEl.style.color = conf > 0.6 ? "#3ecf6a" : conf > 0.4 ? "#ff9800" : "#ff4444";
+            confEl.style.color = conf > 0.6 ? "#3dff8b" : conf > 0.4 ? "#ff9800" : "#ff4444";
         }
     }
 }
